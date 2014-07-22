@@ -18,7 +18,7 @@
   <h1>Reading List</h1>
 
   <div class="row" ng-controller="ReadingListController as readingListCtrl"> 
-    <button class="btn btn-default" ng-click="reviewFormCtrl.showForm = !reviewFormCtrl.showForm">Create Review</button>
+    <button class="btn btn-default" ng-click="reviewFormCtrl.showForm = !reviewFormCtrl.showForm">{{reviewFormCtrl.showForm ? "Cancel" : "Create a Review"}}</button>
     <hr />
     <review-form ng-show="reviewFormCtrl.showForm"></review-form>
     <hr />

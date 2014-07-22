@@ -1,9 +1,24 @@
-<form name="reviewForm" class="form-horizontal">
+<form name="reviewForm" class="form-horizontal" ng-submit="reviewFormCtrl.addReview(reviewForm)">
 
-<section class="row well live-preview">
+<section class="row well live-preview" ng-show="reviewFormCtrl.book.isbn">
 	<aside class="col-sm-3">
-		<a href=""></a>
+	  <a href="http://www.amazon.com/gp/product/{{reviewFormCtrl.book.isbn}}">
+      <img ng-src="http://images.amazon.com/images/P/{{reviewFormCtrl.book.isbn}}.01.ZTZZZZZZ.jpg" alt="Cover of {{reviewFormCtrl.book.title}}" class="full">
+    </a>
+    <p>{{reviewFormCtrl.book.rating || '0'}}/5</p>
 	</aside>
+	<div class="col-sm-9">
+      <h3>
+        <a href="http://www.amazon.com/gp/product/{{reviewFormCtrl.book.isbn}}">
+          {{reviewFormCtrl.book.title || "Title of Book"}}
+        </a>
+      </h3>
+      <cite class="text-muted">Written by {{reviewFormCtrl.book.author || "Author's Name"}}</cite>
+
+      <p>{{reviewFormCtrl.book.review || "No review yet."}}</p>
+
+      <book-genres genres="reviewFormCtrl.book.genres"></book-genres>
+    </div>
 </section>
 
 

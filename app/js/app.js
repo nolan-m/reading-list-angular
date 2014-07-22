@@ -13,7 +13,10 @@ app.controller('ReadingListController', function(){
 app.directive('bookGenres', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'partials/book-genres.html'
+		templateUrl: 'partials/book-genres.html',
+		scope: {
+			genres: '='
+		}
 	}
 });
 
@@ -32,8 +35,19 @@ app.directive('reviewForm', function(){
 		replace: 'true',
 		controller: function(){
 			this.showForm = false;
+			this.book = { genres: { } };
+			this.addReview = function(form) {
+				books.push(this.book);
+				this.book = { genres: { } };
+
+				form.$setPristine();
+			}
 		},
-		controllerAs: 'reviewForm'
+		controllerAs: 'reviewFormCtrl',
+		scope : {
+			books: '=',
+			genres: '='
+		}
 	}
 });
 

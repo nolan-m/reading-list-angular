@@ -15,7 +15,15 @@ app.directive('bookGenres', function(){
 		restrict: 'E',
 		templateUrl: 'partials/book-genres.html'
 	}
-})
+});
+
+app.directive('bookCover', function(){
+	return {
+		restrict: 'E',
+		templateUrl: 'partials/book-cover.html',
+		replace: 'true'
+	}
+});
 
 
 

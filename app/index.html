@@ -13,11 +13,43 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 
-<body ng-app="readingList">
-  <div class="container" ng-include="'partials/app.html'">test</div>
+<body class="container" ng-app="readingList">
 
-  <script src="/bower_components/angular/angular.js"></script>
-  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <h1>Reading List</h1>
+
+  <div class="row" ng-controller="ReadingListController as readingListCtrl"> 
+    <button class="btn btn-default">Create Review</button>
+    <hr />
+    <hr />
+
+    <ul class="list-unstyled col-sm-8">
+      <li class="book row" ng-repeat="book in readingListCtrl.books">
+        <aside class="col-sm-3">
+
+          <a href="http://www.amazon.com/gp/product/{{book.isbn}}"><img ng-src="http://images.amazon.com/images/P/{{book.isbn}}.01.ZTZZZZZZ.jpg" alt="Cover of {{book.title}}" class="full"></a>
+
+          <p ng-class="{goodRating: book.rating >= 3}" class="rating">{{book.rating}}/5</p>
+        </aside>
+
+        <div class="col-sm-9">
+          <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}"
+            >{{book.title}}</a></h3>
+
+          <cite class="text-muted">Written by {{book.author}}</cite>
+
+          <p>{{book.review}}</p>
+
+          <ul class="list-unstyled">
+            <li>
+            <span class="label label-primary" ng-repeat="(genre, state) in book.genres" ng-show="state">{{genre}}</span>
+            </li></ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="js/app.js"></script>
 
 </body>

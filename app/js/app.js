@@ -3,7 +3,14 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('readingList', [ ]);
+var app = angular.module('readingList', [ ]);
+
+app.controller('ReadingListController', function(){
+	this.books = books;
+	this.genres = genres;
+});
+
+
 
 
 

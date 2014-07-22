@@ -29,7 +29,11 @@ app.directive('reviewForm', function(){
 	return {
 		restrict: 'E',
 		templateUrl: 'partials/review-form.html',
-		replace: 'true'
+		replace: 'true',
+		controller: function(){
+			this.showForm = false;
+		},
+		controllerAs: 'reviewForm'
 	}
 });
 

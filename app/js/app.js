@@ -10,7 +10,12 @@ app.controller('ReadingListController', function(){
 	this.genres = genres;
 });
 
-
+app.directive('bookGenres', function(){
+	return {
+		restrict: 'E',
+		templateUrl: 'partials/book-genres.html'
+	}
+})
 
 
 
